@@ -1,6 +1,6 @@
 $(function(){
 	//创建模态框的构造函数
-	function log(text){
+	function log(){
 		return{
 			tip:function(text){
 				$(".model-tip").addClass("model-tip-active").find("span").text(text);
@@ -129,7 +129,7 @@ $(function(){
 							else{
 								allow = false;
 								var targetTop = $(this).offset().top;
-								scroll(targetTop,second);
+								scroll(targetTop);
 								myLog.tip(label+"格式错误,请重新核对");
 								return false;
 							}
@@ -138,7 +138,7 @@ $(function(){
 					else {
 						allow = false;
 						var targetTop = $(this).offset().top;
-						scroll(targetTop,second);
+						scroll(targetTop);
 						myLog.tip(label+"不能为空");
 						return false;
 					}
@@ -153,7 +153,7 @@ $(function(){
 					else{
 						allow = false;
 						var targetTop = $(this).offset().top;
-						scroll(targetTop,second);
+						scroll(targetTop);
 						myLog.tip(label+"格式错误,请重新核对");
 						return false;
 					}
@@ -225,7 +225,7 @@ $(function(){
 						myLog.tip(data.reason);
 					} 
 				},
-				error : function(data){
+				error : function(){
 					myLog.tip("提交失败，请检查网络连接");
 				}
 			});
