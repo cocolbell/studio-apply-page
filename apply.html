@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>2016级研发招新官网</title>
+    <!-- icon -->
+    <link rel="icon" href="./img/RDC.ico" type="image/x-icon"/>
+    <!-- style -->
+    <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="stylesheet" href="./css/apply.css"/>
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+        </script>
+    <![endif]-->
+</head>
+    
+<body>
+    <div class="page-wrapper">
+        <img src="./img/lightRay-left.png" class="a-left" alt="lightRay" />
+        <img src="./img/lightRay-right.png" class="a-right" alt="lightRay"/>
+        <img src="./img/lightRay-left.png" class="b-left" alt="lightRay"/>
+        <img src="./img/lightRay-right.png" class="b-right" alt="lightRay"/>
+        <div class="mask"></div>
+        <div class="model-box">
+            <div class="model-tip">
+                <span class="model-msg"></span>
+            </div>
+            <div class="model-dialog">
+                <p class="model-msg">是否确认报名？</p>
+                <div class="model-test">
+                    <span>请输入验证码：</span>
+                    <input class="testNum" type="text">
+                    <img class="testImg" src="#" alt="出错了" title="点击可切换验证码">
+                    <p class="help-block">验证码不能为空</p>
+                </div>
+                <div class="model-choice">
+                    <span class="model-refuse" id="refuseBtn">取消</span>
+                    <span class="model-confirm" id="confirmBtn">确认</span>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img src="./img/planet.png" class="abs planet" alt="planet" />
+            <img src="./img/moon.png" class="abs moon" alt="moon" />
+            <div class="screen-1">
+                <div class="topBar">
+                    <img src="./img/logo.png" class="logoImg" alt="logo">
+                </div>
+                <div class="title">
+                    <img src="./img/title.png" class="title-img" alt="title">
+                </div>
+            </div>
+            <div class="apply-page">
+                <div class="panel-1">
+                    <div class="form-switch">
+                        <h4>基本资料</h4>
+                        <i></i>
+                    </div>
+                    <div class="user-info">
+                        <!-- <div class="row"> -->
+                            <div class="form-wrap margin-top device-top">
+                                <span class="form-label">姓名<i>*</i></span>
+                                <input type="text" class="form-text data-for-user" name="name">
+                            </div>
+                            <div class="form-wrap margin-top device-top margin-left device-left">
+                                <span class="form-label">学号<i>*</i></span>
+                                <input type="text" class="form-text data-for-user" name="identity">
+                            </div>
+                            <div class="form-wrap margin-top device-top margin-left">
+                                <span class="form-label">性别<i>*</i></span>
+                                <span class="form-text" id="genderChange">男</span>
+                                <input type="text" class="form-text" name="gender" id="genderReal" value="男" style="display:none;">
+                            </div>
+                        <!-- </div> -->
+                        <!-- <div class="row"> -->
+                            <div class="form-wrap margin-top device-top device-left">
+                                <span class="form-label">学院<i>*</i></span>
+                                <input type="text" class="form-text data-for-user" name="college">
+                            </div>
+                            <div class="form-wrap margin-top device-top margin-left">
+                                <span class="form-label">专业班级<i>*</i></span>
+                                <input type="text" class="form-text data-for-user" id="majorAndClass" name="majorAndClass">
+                            </div>
+                            <div class="form-wrap margin-top device-top margin-left device-left">
+                                <span class="form-label">现任职务</span>
+                                <input type="text" class="form-text data-for-user" id="job" name="job">
+                            </div>
+                        <!-- </div> -->
+                        <!-- <div class="row"> -->
+                            <div class="form-wrap margin-top device-top input-length-1">
+                                <span class="form-label">手机号码<i>*</i></span>
+                                <input type="text" class="form-text data-for-user" id="phoneNumber" name="phoneNumber">
+                            </div>
+                            <div class="form-wrap margin-top device-top margin-left"  id="shortNumber">
+                                <span class="form-label">短号</span>
+                                <input type="text" class="form-text data-for-user" name="shortNumber">
+                            </div>
+                        <!-- </div> -->
+                        <!-- <div class="row"> -->
+                            <div class="form-wrap margin-top device-top input-length-1">
+                                <span class="form-label">邮箱</span>
+                                <input type="text" class="form-text data-for-user" id="email" name="email">
+                            </div>
+                            <div class="form-wrap margin-top device-top margin-left device-length-1">
+                                <span class="form-label">QQ<i>*</i></span>
+                                <input type="text" class="form-text data-for-user" id="qq" name="qq">
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="panel-2">
+                    <div class="form-switch">
+                        <h4>报名方向</h4>
+                        <i></i>
+                    </div>
+                    <div class="user-choice">    
+                        <div class="row">
+                            <div class="checkBox checkBox-active device-top" choice="0">
+                                <i></i>
+                                <span>Web 前端组</span>
+                            </div>
+                            <div class="checkBox margin-left device-top" choice="1">
+                                <i></i>
+                                <span>Java 后台组</span>
+                            </div>
+                            <div class="checkBox margin-left device-top" choice="2">
+                                <i></i>
+                                <span>Android 移动组</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-3">
+                    <div class="form-switch">
+                        <h4>自我介绍</h4>
+                        <i></i>
+                    </div>
+                    <div class="user-intro">
+                        <div class="row">
+                            <div class="form-wrap input-length-2">
+                                <span class="form-label">特长</span>
+                                <input type="text" class="form-text data-for-user" id="specialty" name="specialty">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-wrap input-length-2 input-height-1">
+                                <span class="form-label">自我简介<span>（计算机类技能、经验或自我评价）</span><i>*</i></span>
+                                <textarea class="form-text data-for-user" id="selfIntroduction" name="selfIntroduction" placeholder="在这里输入自我简介"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-wrap input-length-2 input-height-2">
+                                <span class="form-label">加入本团队的目的及期望</span>
+                                <textarea class="form-text data-for-user" id="expection" name="expection" placeholder="在这里输入你的目的和期望"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rhomb-wrapper submit-row">
+                    <div class="rhomb">    
+                        <div class="submit" id="submitBtn"><span>提交报名表</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <canvas id="canvasOne" class="dusty" width="1280" height="1420"></canvas>
+        <canvas id="canvasAustro" class="austro" width="600" height="640"></canvas>
+        <canvas id="bg-stars" class="bg-stars"></canvas>
+    </div>
+    <script type="text/javascript">
+        var isMobile = false;
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            isMobile = true;
+        }
+    </script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/pixi.js"></script>
+    <script src="./js/bg-stars.js"></script>
+    <script src="./js/apply.js"></script>
+</body>
+
+</html>

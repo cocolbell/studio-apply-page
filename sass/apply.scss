@@ -1,0 +1,569 @@
+@charset "utf-8";
+$fontSize: 14px;
+$fontFam : Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+$baseWidth: 165px;
+$baseHeight: 21px;
+$textColor: #555;
+
+//移动端适配函数
+@mixin respond-xs(){
+	@media screen and (max-width:480px){
+		@content;
+	}
+};
+//动画位置调整
+@mixin animaAdjust ($borderWidth,$paddingLeft,$paddingTop) {
+    position:relative;
+    border-color: transparent;
+	top:-$paddingTop+-$borderWidth;
+	left:-$paddingLeft+-$borderWidth;
+};
+//基本动画
+@mixin baseAnima($animaName,$second){
+	-webkit-animation: $animaName $second infinite ease-in-out alternate;
+	-moz-animation: $animaName $second infinite ease-in-out alternate;
+	-o-animation: $animaName $second infinite ease-in-out alternate;
+	animation: $animaName $second infinite ease-in-out alternate;
+}
+@mixin transition($second){
+	-webkit-transition: all $second;
+    -moz-transition: all $second;
+    -o-transition: all $second;
+    transition: all $second;
+}
+//提示框及其组件
+.mask{
+	display:none;
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+	background-color:rgba(33, 36, 34, 0.63);
+	opacity: 0.6;
+	z-index: 999;
+}
+.model-tip{
+	@include transition(0.3s);
+	// display:none;
+	position:fixed;
+	left:0;
+	right:0;
+	top:-200px;
+	margin:0 auto;
+	width:640px;
+	height:55px;
+	text-align:center;
+	font-size:$fontSize+2;
+	background-color:white;
+	color:#575757;
+	border-radius: 2px;
+	box-shadow: 0 6px 24px rgba(0, 0, 0, .24);
+	z-index:1000;
+	.model-msg{
+		line-height:55px;
+		font-size:$fontSize+6;
+		font-weight: normal;
+		@include respond-xs() {
+			line-height:40px;
+			box-shadow: 0 0 0 rgba(0, 0, 0, .24);
+			border-radius:0;
+			font-size:1.3rem;
+		};
+	}
+	@include respond-xs() {
+		width:98%;
+		height:40px;
+		padding:0;
+	};
+}
+.model-tip-active{
+	top:3px;
+}
+%model-choice{
+	float:right;
+	text-align: center;
+    font-size: 14px;
+    outline: none;
+    display: inline-block;
+    margin-right: 4px;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid transparent;
+    color: #fff;
+    padding: 3px 4px;
+    line-height: 20px;
+    border-radius: 1px;
+    min-width: 80px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .32);
+	@include transition(0.3s);
+};
+.model-dialog{
+	@include transition(0.3s);
+	@extend .model-tip;
+	width:314px;
+	height: 160px;
+	.model-test{
+		margin-top:15px;
+		height:50px;
+		span{
+			vertical-align:middle;
+		}
+	}
+	.testNum{
+		width:70px;
+		height:24px;
+		outline:none;
+		border-radius:2px;
+		border:1px solid #ccc;
+	}
+	.testImg{
+		margin:0;
+		width:80px;
+		height:26px;
+		display:inline-block;
+		vertical-align:middle;
+		cursor: pointer;
+	}
+	.help-block{
+		display:none;
+		margin-top:5px;
+		font-size:12px;
+		color:#f44336;
+	}
+	.model-confirm{
+		@extend %model-choice;
+		background-color: #03a9f4;
+	}
+	.model-refuse{
+		@extend %model-choice;
+		color: #333;
+    	background-color: #fff;
+	}
+}
+.page-wrapper .model-box .model-dialog-active{
+	top:200px;
+	@include respond-xs() {
+		top:20px;
+	};
+}
+.model-confirm:hover,.model-refuse:hover{
+		box-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+	}
+//主要样式
+.apply-page{
+	margin-top: 100px;
+	text-align: center;
+	font-size: $fontSize;
+	font-family:$fontFam;
+	color:white;
+	@include respond-xs() {
+		margin-top:15px;
+	};
+}
+.panel-1{
+	margin: 0 auto;
+	width:690px;
+	@include respond-xs() {
+		width:100%;
+	};
+}
+.panel-2{
+	margin: 40px auto 35px auto;
+	@include respond-xs() {
+		margin: 20px auto 17px auto;
+	};
+}
+.planet {
+    top: 420px;
+    left: 15%;
+}
+.form-switch{
+	width:600px;
+	height:60px;
+	margin:0 auto 25px auto;
+	padding:0 35px; 
+	border:solid white 2px;
+	border-radius:60px;
+	font-size: $fontSize+10;
+	h4 {
+		line-height: 60px;
+		text-align:left;
+		@include respond-xs() {
+	    	line-height:40px;
+		}; 
+	};
+	@include respond-xs() {
+		margin:0 auto;
+		padding: 0 7%;
+    	width: 84%;
+    	font-size:1.6rem;
+    	height:40px;
+    	line-height:40px;
+	};
+}
+%form-wrap-base{
+	display: inline-block;
+	width: $baseWidth;
+	height: $baseHeight;
+	// line-height: $baseHeight;
+	border-radius: $baseHeight;
+	background-color: white;  
+	outline: none;
+	padding:9px 22px;
+	border:white solid 2px;
+	font-size:$fontSize+2;
+	text-align:left;
+}
+.form-wrap{
+	@extend %form-wrap-base;
+	@include respond-xs() {
+		width:39%;
+		height:23px;
+		padding:4px 4%;
+		font-size:1.1rem;
+	};
+	.form-label{
+		color: #999;
+		// line-height: $baseHeight;
+		@include respond-xs() {
+			// line-height:23px;
+		};
+		i {
+			color:#FC896A;
+		}
+	}
+	.form-text{
+		width:110px;
+		border: 0;
+		margin-left:4px;
+		font-family:$fontFam;
+		font-size:$fontSize+2;
+		color:$textColor;
+		background-color: transparent;
+		outline: none;
+		line-height: $baseHeight;
+		@include respond-xs() {
+			width:65%;
+			line-height:23px;
+			font-size:1.1rem;
+		};
+	}
+	#majorAndClass{
+		width:85px;
+		@include respond-xs() {
+			width:40%;
+		};
+	}
+	#genderChange{
+		display:inline-block;
+		cursor:pointer;
+	}
+	#job{
+		width:80px;
+		@include respond-xs() {
+			width:45%;
+		};
+	}
+	#phoneNumber{
+		width:300px;
+		@include respond-xs() {
+			width:73%;
+		};
+	}
+	#email{
+		width:330px;
+		@include respond-xs() {
+			width:86%;
+		};
+	}
+}
+.user-choice{
+	@include respond-xs() {
+		text-align:left;
+	};
+}
+.checkBox{
+	@extend %form-wrap-base;
+	// @include animaAdjust(2px,22px,9px);
+	@include transition(0.3s);
+	background-color:transparent;
+	cursor:pointer;
+	@include respond-xs() {
+		width:50%;
+		height:23px;
+		line-height:23px;
+		padding:4px 4%;
+		font-size:1.1rem;
+	};
+	i{
+		@include transition(0.3s);
+		display:inline-block;
+		width: 15px;
+    	height: 15px;
+    	border-radius:100%;
+    	background-color:white;
+    	vertical-align:middle;
+    	margin-right:8px;
+    	@include respond-xs() {
+			width: 13px;
+    		height: 13px;
+		};
+	}
+	span{
+		display:inline-block;
+		vertical-align:middle;
+	}
+}
+.checkBox-active{
+	background-color:white;
+	color:#041527;
+	i{
+		background-color:#041527;
+	}
+}
+.checkBox-hover{
+	background-color:white;
+	color:#041527;
+	i{
+		background-color:#041527;
+	}
+}
+@keyframes pulsate-big{
+	0% {
+    box-shadow: 0 0 0 0px rgba(254,254,254,0.07);
+	}
+
+	100% {
+	    box-shadow: 0 0 0 16px rgba(254,254,254,0.07);
+	}
+}
+@keyframes pulsate{
+	0% {
+	    box-shadow: 0 0 0 0px rgba(254,254,254,0.07);
+	}
+	100% {
+	    box-shadow: 0 0 0 8px rgba(254,254,254,0.07);
+	}
+}
+.user-intro{
+	#specialty{
+		width:570px;
+		@include respond-xs() {
+			width:80%;
+		};
+	}
+	#selfIntroduction{
+		margin:16px 0 0 0;
+		float:left;
+		width:618px;
+		height:200px;
+		resize:none;
+		@include respond-xs() {
+			margin:6px 0 0 0;
+			width:100%;
+			height:90px;
+		};
+	}
+	#expection{
+		margin:16px 0 0 0;
+		float:left;
+		width:618px;
+		height:100px;
+		resize:none;
+		@include respond-xs() {
+			margin:6px 0 0 0;
+			width:100%;
+			height:60px;
+		};
+	}
+}
+.submit-row{
+	margin-top:70px;
+	@include respond-xs() {
+		margin-top:25px;
+	};
+}
+%submit-example{
+	@extend %form-wrap-base;
+	text-align:center;
+	color:white;
+	height:40px;
+	line-height:40px;
+	border-radius:60px;
+	font-size:24px;
+	background-color:transparent;
+	cursor:pointer;
+	@include respond-xs() {
+		height:25px;
+		line-height:25px;
+		font-size:1.5rem;
+	};
+}
+.rhomb-wrapper{
+	@extend %submit-example;
+	@extend .input-length-2;
+	background-color:transparent;
+	position:relative;
+	@include baseAnima(pulsate-big,0.8s);
+	// @include animaAdjust(2px,22px,9px);
+	-webkit-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+	-webkit-animation-timing-function: ease-out;
+	animation-timing-function: ease-out;
+	// :hover{
+	// 	background-color:white;
+	// 	color:black;
+	// }
+	@include respond-xs() {
+		padding:4px 10px;
+	};
+}
+.rhomb{
+	@extend %submit-example;
+	width:626px;
+	margin-top:0;
+	background-color:transparent;
+	@include animaAdjust(2px,22px,9px);
+	@include baseAnima(pulsate,0.8s);
+	-webkit-animation-timing-function: ease-out;
+	animation-timing-function: ease-out;
+	@include respond-xs() {
+		width:100%;
+		padding:4px 10px;
+		@include animaAdjust(2px,10px,4px);
+	};
+}
+.submit{
+	@extend  %submit-example;
+	width:626px;
+	@include animaAdjust(2px,22px,9px);
+	@include respond-xs() {
+		width:100%;
+		padding:4px 10px;
+		@include animaAdjust(2px,10px,4px);
+	};
+}
+.submit:hover{
+	color:#041527;
+}
+// a:link, a:visited {
+//     color: #fff;
+//     text-decoration: none;
+// }
+
+.submit:hover::before {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.submit::before {
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -3px;
+    width: 101%;
+    height: 100%;
+    background-color: #fff;
+    border-radius:60px;
+    z-index: -5;
+    opacity: 0;
+    -webkit-transform: scale3d(0.7, 1, 1);
+    transform: scale3d(0.7, 1, 1);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+    transition: transform 0.4s, opacity 0.4s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+//辅助类
+.margin-left{
+	margin-left:12px;
+	@include respond-xs() {
+		margin-left:0;
+	};
+}
+.margin-top{
+	margin-top:14px;
+	@include respond-xs() {
+		margin-top:0;
+	};
+}
+.device-top{
+	@include respond-xs() {
+		margin-top:8px;
+	};
+}
+.device-left{
+	@include respond-xs() {
+		margin-left:5px;
+	};
+}
+.input-length-1{
+	width:392px;
+	@include respond-xs() {
+		width:90%;
+	};
+}
+.device-length-1{
+	@include respond-xs() {
+    	width:90%;
+	};
+}
+.input-length-2{
+	width:626px;
+	@include respond-xs() {
+		width:90%;
+	};
+}
+.input-height-1{
+	height:240px;
+	padding:17px 20px;
+	@include respond-xs() {
+		height:150px;
+		padding:3% 4%;
+		border-radius:12px;
+	};
+}
+.input-height-2{
+	height:140px;
+	padding:17px 20px;
+	@include respond-xs() {
+		height:120px;
+		padding:4% 5%;
+		border-radius:12px;
+	};
+}
+.row{
+	margin-top:14px;
+}
+
+@media screen and (max-width:480px){
+	html{
+		font-size:12px;
+	}
+	.screen-1 .title{
+		display:none;
+	}
+	.container>img{
+		display:none;
+	}
+	.container{
+		padding-top:0;
+	}
+	#shortNumber{
+		display:none;
+	}
+	.page-wrapper{
+		min-height:1300px;
+	}
+}
+@media screen and (min-width: 720px) and (max-width:1200px){
+	.container>img{
+		display:none;
+	}
+}
